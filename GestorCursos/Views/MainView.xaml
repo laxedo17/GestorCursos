@@ -1,0 +1,49 @@
+﻿<Window x:Class="GestorCursos.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorCursos.Views"
+        mc:Ignorable="d"
+        Title="Xestor de Matriculas de Estudiantes" Height="400" Width="800">
+    <Border Padding="10">
+        <StackPanel>
+            <TextBlock Text="Xestionar" FontWeight="Bold" Margin="0 10" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Column="0" Grid.Row="0" Margin="0 0 10 0">
+                    <TextBlock Text="Estudiantes"/>
+                    <ComboBox ItemsSource="{Binding Path=Estudiantes}" DisplayMemberPath="Nombre" SelectedItem="{Binding Path=EstudianteMatriculaSeleccionada, Mode=TwoWay}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="0" Margin="0 0 10 0">
+                    <TextBlock Text="Cursos"/>
+                    <ComboBox ItemsSource="{Binding Path=Cursos}" DisplayMemberPath="Descripcion" SelectedItem="{Binding Path=CursoMatriculaSeleccionada, Mode=TwoWay}"/>
+                </StackPanel>
+
+                <ListView Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="0 10 0 0" Height="200" x:Name="Matriculas" DisplayMemberPath="IdMatricula" SelectedItem="{Binding Path=MatriculaSeleccionada, Mode=TwoWay}">
+                    
+                </ListView>
+            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Gardar Matricula" HorizontalAlignment="Left" Width="150" Margin="0 10 10 0" x:Name="GuardarMatricula"/>
+                <Button Content="Rexistrar Nova Matricula" HorizontalAlignment="Left" Width="150" Margin="0 10 10 0" x:Name="CrearNuevaMatricula"/>
+            </StackPanel>
+
+            <StatusBar Height="25" Margin="0 10 0 0">
+                <StatusBarItem TextBlock.TextAlignment="Left">
+                    <TextBlock Text="{Binding Path=AppStatus}"></TextBlock>
+                </StatusBarItem>
+            </StatusBar>
+        </StackPanel>
+    </Border>
+</Window>
